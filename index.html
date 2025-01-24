@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bario - Exclusive Travel Experiences</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="grid-container">
+        <header id="header">
+            <a href="#" class="logo">BARIO</a>
+            <button>Join the Club</button>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content fade-in">
+                <h1>Curated Journeys for the Discerning Explorer</h1>
+                <p class="luxury-text">Welcome to an exclusive community of sophisticated travelers who seek the extraordinary. Bario offers carefully curated experiences, privileged access, and bespoke recommendations for those who appreciate the art of authentic travel.</p>
+                <button style="margin-top: 3rem;">Request an Invitation</button>
+            </div>
+            <div class="hero-image fade-in"></div>
+        </section>
+        <section class="who-we-are fade-in">
+            <div class="who-we-are-content">
+                <h2 class="section-title-lighter">Who We Are</h2>
+                <p class="luxury-text-lighter">Bario is where locals can share their passions and find new ones. Bario makes it easy to create and find new adventures around the world and in your backyard. You'll love exploring new activities and creating new ones to share.</p>
+                <p class="luxury-text-lighter" style="margin-top: 2rem;">We're a group of travelers, adventure seekers, techies, and food lovers who are trying to fix the mundane way we all have gotten use to traveling. Big corporate hotels, mega-resorts, and multi-million dollar tour operators are so yesterday. Bario guides are unique, authentic, local, genuine, trustworthy, exclusive, and most importantly people like you.</p>
+                <p class="luxury-text" style="margin-top: 2rem; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;">Welcome to Bario—a global club for explorers, by explorers.</p>
+            </div>
+        </section>
+
+        <section class="about fade-in">
+            <div class="service-image1"></div>
+            <div class="about-content">
+                <h2 class="section-title">The Full Story</h2>
+                <p class="luxury-text">As avid travelers, we often find ourselves reaching out to local friends for recommendations on the most authentic, unspoiled places to explore in cities around the world. This shared passion for discovering hidden gems and creating meaningful experiences has been central to the founders of Bario. Over time, we accumulated countless curated lists—scattered across various apps and formats—which inspired us to create something better.</p>
+                <p class="luxury-text" style="margin-top: 2rem;">Bario was born out of this vision: a multi-platform community where all our personalized, handpicked recommendations come together in one place.</p>
+            </div>
+        </section>
+        <section class="services">
+            <div class="service-card fade-in">
+                <div class="service-image2"></div>
+                <h3 class="section-title">Exclusive Access</h3>
+                <p class="luxury-text">Gain privileged entry to the world's most coveted experiences, from private gallery viewings to chef's table dinners at renowned restaurants.</p>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-image3"></div>
+                <h3 class="section-title">Bespoke Journeys</h3>
+                <p class="luxury-text">Every itinerary is crafted to your precise preferences, ensuring each moment of your journey reflects your personal style.</p>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-image4"></div>
+                <h3 class="section-title">Curated Community</h3>
+                <p class="luxury-text">Connect with like-minded travelers who share your passion for authentic, transformative experiences.</p>
+            </div>
+        </section>
+
+        <section class="waitlist fade-in">
+            <div class="form-container">
+                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 4rem; margin-bottom: 2rem; font-weight: 400;">Join Our Founding Circle</h2>
+                <p class="luxury-text" style="color: #DDD;">Be among the first 100 members to receive lifetime privileged access to our complete suite of premium services.</p>
+                <p style="color: var(--gold); margin-top: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: 0.1em;">Exclusive Benefits Await</p>
+                <div class="input-group">
+                    <input type="email" placeholder="Enter your email address">
+                    <button>Request Access</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Enhanced scroll handling for header
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+    
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    
+        // Advanced Intersection Observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+    
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+    
+                    // General Fade and Slide Animations
+                    if (target.classList.contains('fade-in')) {
+                        target.style.transform = 'translateY(0)';
+                        target.style.opacity = '1';
+                    }
+    
+                    // Specific Image Reveals
+                    if (target.classList.contains('service-image1') || 
+                        target.classList.contains('service-image2') || 
+                        target.classList.contains('service-image3') || 
+                        target.classList.contains('service-image4')) {
+                        target.style.transform = 'scale(1)';
+                        target.style.opacity = '1';
+                    }
+    
+                    revealObserver.unobserve(target);
+                }
+            });
+        }, observerOptions);
+    
+        // Prepare elements for animation
+        const elementsToReveal = [
+            ...document.querySelectorAll('.fade-in'),
+            ...document.querySelectorAll('.service-image1'),
+            ...document.querySelectorAll('.service-image2'),
+            ...document.querySelectorAll('.service-image3'),
+            ...document.querySelectorAll('.service-image4')
+        ];
+    
+        elementsToReveal.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(50px) scale(0.9)';
+            revealObserver.observe(element);
+        });
+    
+        // Smooth scroll for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelector('.waitlist').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+    
+        // Hero Section Reveal
+        function heroContentReveal() {
+            const heroTitle = document.querySelector('.hero h1');
+            const heroText = document.querySelector('.hero .luxury-text');
+            const heroButton = document.querySelector('.hero button');
+            const heroImage = document.querySelector('.hero-image');
+    
+            // Letter-by-letter reveal for title
+            function revealLetterByLetter(element) {
+                const text = element.textContent;
+                element.textContent = '';
+                element.style.opacity = '1';
+                
+                let index = 0;
+                const revealInterval = setInterval(() => {
+                    if (index < text.length) {
+                        element.textContent += text[index];
+                        index++;
+                    } else {
+                        clearInterval(revealInterval);
+                    }
+                }, 30);
+            }
+    
+            // Fade-in for description
+            function fadeInText(element) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'all 0.8s ease-out';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100);
+            }
+    
+            // Sequence the reveals
+            heroImage.style.opacity = '0';
+            heroImage.style.transform = 'translateY(50px)';
+    
+            setTimeout(() => {
+                heroImage.style.opacity = '1';
+                heroImage.style.transform = 'translateY(0)';
+    
+                setTimeout(() => {
+                    revealLetterByLetter(heroTitle);
+                    
+                    // Start fading in description at the same time as title reveal
+                    fadeInText(heroText);
+                    
+                    setTimeout(() => {
+                        heroButton.style.opacity = '1';
+                        heroButton.style.transform = 'translateY(0)';
+                    }, 500);
+                }, 500);
+            }, 300);
+        }
+    
+        // Trigger hero reveal
+        heroContentReveal();
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        function heroContentReveal() {
+            const heroTitle = document.querySelector('.hero h1');
+            const heroText = document.querySelector('.hero .luxury-text');
+            const heroButton = document.querySelector('.hero button');
+            const heroImage = document.querySelector('.hero-image');
+    
+            // Letter-by-letter reveal for title
+            function revealLetterByLetter(element) {
+                const text = element.textContent;
+                element.textContent = '';
+                element.style.opacity = '1';
+                
+                let index = 0;
+                const revealInterval = setInterval(() => {
+                    if (index < text.length) {
+                        element.textContent += text[index];
+                        index++;
+                    } else {
+                        clearInterval(revealInterval);
+                    }
+                }, 30);
+            }
+    
+            // Fade-in for description
+            function fadeInText(element) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'all 0.8s ease-out';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100);
+            }
+    
+            // Sequence the reveals
+            heroImage.style.opacity = '0';
+            heroImage.style.transform = 'translateY(50px)';
+    
+            setTimeout(() => {
+                heroImage.style.opacity = '1';
+                heroImage.style.transform = 'translateY(0)';
+    
+                setTimeout(() => {
+                    // Reveal title with a fixed height
+                    heroTitle.style.height = heroTitle.offsetHeight + 'px';
+                    revealLetterByLetter(heroTitle);
+                    
+                    // Start fading in description at the same time as title reveal
+                    fadeInText(heroText);
+                    
+                    setTimeout(() => {
+                        heroButton.style.opacity = '1';
+                        heroButton.style.transform = 'translateY(0)';
+                    }, 500);
+                }, 500);
+            }, 300);
+        }
+    
+        heroContentReveal();
+    });
+   </script>
+</body>
+</html>
